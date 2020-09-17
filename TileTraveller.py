@@ -148,15 +148,16 @@ while room != "3,1": # loop this until the user is in the winning room
     
 
     print("You can travel:", end=" ")
+    
     room_reader(room)
     way = input("Direction: ")
 
     way_check, North_way, South_way, East_way, West_way = way_checker(way, North, South, East, West)
 
-    if way_check:
+    if way_check: # cheking if the move was valid
         room = way_mover(room, North_way, South_way, East_way, West_way)
 
-if room == "3,1":
+if room == "3,1": # cheking the victory room
     print("Victory!")
     
 
