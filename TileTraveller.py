@@ -31,6 +31,11 @@ def way_mover (room, North, South, East, West):
 
 def way_cheker(way, North, South, East, West):
     way_2 = way.lower()
+    North_way = False
+    South_way = False
+    East_way = False
+    West_way = False
+    way_check = False
     if North and way_2 == "n":
         way_check = True
         North_way = True
@@ -81,7 +86,19 @@ def room_checker (room):
     return North, South, East, West
 
 room = "1,1"
-North, South, East, West = room_checker(room)
-
 while room != "3,1":
+    North, South, East, West = room_checker(room)
+    print("You can travel:", end=" ")
+    if North:
+        print("(N)orth or", end=" ")
+    if East:
+        print("(E)ast or", end=" ")
+    if South:
+        print("(E)ast", end=" ")
+    if West:
+        print("(W)est", end=" ")
+    way = input("Direction: ")
+
+    way_check, North_way, South_way, East_way, West_way = way_cheker(way, North, South, East, West)
     
+
