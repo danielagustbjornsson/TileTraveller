@@ -29,7 +29,7 @@ def way_mover (room, North, South, East, West):
         room_4 = room_3 + ","+ room_2[1]
     return room_4
 
-def way_cheker(way, North, South, East, West):
+def way_checker(way, North, South, East, West):
     way_2 = way.lower()
     North_way = False
     South_way = False
@@ -85,20 +85,42 @@ def room_checker (room):
         South = True
     return North, South, East, West
 
+def room_reader(room):
+    if room == "1,1":
+        print("(N)orth.")
+    elif room == "1,2":
+        print("(N)orth or (E)ast or (S)outh.")
+    elif room == "1,3":
+        print("(E)ast or (S)outh.")
+    elif room == "2,1":
+        print("(N)orth.")
+    elif room == "2,2":
+        print("(S)outh  or (W)est.")
+    elif room == "2,3":
+        print("(E)ast or (W)est.")
+    elif room == "3,1":
+        print("Victory!")
+        # wining room
+    elif room == "3,2":
+        print("(N)orth or (S)outh.")
+    elif room == "3,3":
+        print("(S)outh or (W)est.")
+
 room = "1,1"
+way_check = True
 while room != "3,1":
     North, South, East, West = room_checker(room)
-    print("You can travel:", end=" ")
-    if North:
-        print("(N)orth or", end=" ")
-    if East:
-        print("(E)ast or", end=" ")
-    if South:
-        print("(E)ast", end=" ")
-    if West:
-        print("(W)est", end=" ")
+    
+
+    if way_check:
+        print("You can travel:", end=" ")
+        room_reader(room)
     way = input("Direction: ")
 
-    way_check, North_way, South_way, East_way, West_way = way_cheker(way, North, South, East, West)
+    way_check, North_way, South_way, East_way, West_way = way_checker(way, North, South, East, West)
+
+    if way_check:
+        room = way_mover(room, North_way, South_way, East_way, West_way)
+
     
 
