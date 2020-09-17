@@ -1,6 +1,6 @@
 
 # def way_choser
-    # program það takes in what ways are alowed and the room that there in lets the user choose and sents room there in then
+    # program takes in what ways are alowed and the room that there in lets the user choose and sents room there in then
 # def room_checker
     # if room == x
         # set North = x
@@ -8,6 +8,28 @@
         # set East = x
         # set West = x
     # check what room they are in and showes what moves are alowed
+
+def way_choser (room, North, South, East, West):
+    room_2 = room.split(",")
+        
+    if North:
+        room_int = int(room_2[1])
+        room_3 = str(room_int +1)
+        room_4 = room_2[0] + "," + room_3
+    if South:
+        room_int = int(room_2[1])
+        room_3 = str(room_int - 1)
+        room_4 = room_2[0] + "," + room_3
+    if East:
+        room_int = int(room_2[0])
+        room_3 = str(room_int + 1)
+        room_4 = room_3 + ","+ room_2[1]
+    if West:
+        room_int = int(room_2[0])
+        room_3 = str(room_int - 1)
+        room_4 = room_3 + ","+ room_2[1]
+    return room_4
+        
 
 def room_checker (room):
     North = False
