@@ -169,6 +169,7 @@ def main():
     coin_counter = 0
     seed = int(input("Input seed: "))
     random.seed(seed)
+    moves = 0
 
     while room != "3,1": # loop this until the user is in the winning room
         North, South, East, West = room_checker(room)
@@ -184,14 +185,18 @@ def main():
 
         if way_check: # cheking if the move was valid
             room = way_mover(room, North_way, South_way, East_way, West_way)
+            moves += 1
             if pull_lever(room):
                 coin_counter += 1
                 print("You received 1 coin, your total is now", coin_counter, end="")
                 print(".")
+        else:
+            moves +=1
 
     if room == "3,1": # cheking the victory room
         print("Victory! Total coins", coin_counter, end="")
-        print(".")
+        print(". Moves", moves, end=".")
+        print("")
 
 con = "y"
 while con != "n":
