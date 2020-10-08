@@ -142,7 +142,15 @@ def room_reader(room):
     elif room == "3,3":
         print("(S)outh or (W)est.")
 
+def pull_lever():
+    lever = input("Pull a lever (y/n): ")
+
+    if lever == y:
+        return 1
+    return 0
+
 room = "1,1" # Starting room 
+coin_counter = 0
 while room != "3,1": # loop this until the user is in the winning room
     North, South, East, West = room_checker(room)
     
@@ -156,8 +164,10 @@ while room != "3,1": # loop this until the user is in the winning room
 
     if way_check: # cheking if the move was valid
         room = way_mover(room, North_way, South_way, East_way, West_way)
+        coin_counter += pull_lever()
 
 if room == "3,1": # cheking the victory room
-    print("Victory!")
+    print("Victory! Total coins", coin_counter)
+
     
 
