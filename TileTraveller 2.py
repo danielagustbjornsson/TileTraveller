@@ -127,7 +127,7 @@ def room_reader(room):
         print("(N)orth.")
 
     elif room == "2,2":
-        print("(S)outh  or (W)est.")
+        print("(S)outh or (W)est.")
 
     elif room == "2,3":
         print("(E)ast or (W)est.")
@@ -144,16 +144,23 @@ def room_reader(room):
 
 def pull_lever(room):
     if room == "1,2" or room == "2,2" or room == "2,3" or room == "3,2":
-        lever = input("Pull a lever (y/n): ")
+        lever = random_pull_lever()
         if lever == "y" or lever == "Y":
             return True
     return False
+
+def random_pull_lever():
+    choices = ["y", "n"]
+    lever = random.choice(choices)
+    print("Pull a lever (y/n):", lever)
+    return lever
 
 
 def random_choice_ways():
     ways = ["n", "e", "s", "w"]
     way = random.choice(ways)
     print("Direction:", way)
+    return way
     
 
 
