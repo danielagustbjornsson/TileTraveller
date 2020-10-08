@@ -12,7 +12,7 @@
     # checkes if the users input is allowed in that room
 # def room_reader
     # showes what the user what moves are allowed
-
+import random
 
 def way_mover (room, North, South, East, West):
     room_split = room.split(",")
@@ -149,9 +149,20 @@ def pull_lever(room):
             return True
     return False
 
+
+def random_choice_ways():
+    ways = ["n", "e", "s", "w"]
+    way = random.choice(ways)
+    print("Direction:", way)
+    
+
+
 def main():
     room = "1,1" # Starting room 
     coin_counter = 0
+    seed = int(input("Input seed: "))
+    random.seed(seed)
+
     while room != "3,1": # loop this until the user is in the winning room
         North, South, East, West = room_checker(room)
         
@@ -159,7 +170,8 @@ def main():
         print("You can travel:", end=" ")
         
         room_reader(room)
-        way = input("Direction: ")
+
+        way = random_choice_ways()
 
         way_check, North_way, South_way, East_way, West_way = way_checker(way, North, South, East, West)
 
