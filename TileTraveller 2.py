@@ -145,7 +145,7 @@ def room_reader(room):
 def pull_lever():
     lever = input("Pull a lever (y/n): ")
 
-    if lever == y:
+    if lever == "y" or lever == "Y":
         return 1
     return 0
 
