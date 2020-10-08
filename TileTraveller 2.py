@@ -149,27 +149,36 @@ def pull_lever(room):
             return True
     return False
 
-room = "1,1" # Starting room 
-coin_counter = 0
-while room != "3,1": # loop this until the user is in the winning room
-    North, South, East, West = room_checker(room)
-    
+def main():
+    room = "1,1" # Starting room 
+    coin_counter = 0
+    while room != "3,1": # loop this until the user is in the winning room
+        North, South, East, West = room_checker(room)
+        
 
-    print("You can travel:", end=" ")
-    
-    room_reader(room)
-    way = input("Direction: ")
+        print("You can travel:", end=" ")
+        
+        room_reader(room)
+        way = input("Direction: ")
 
-    way_check, North_way, South_way, East_way, West_way = way_checker(way, North, South, East, West)
+        way_check, North_way, South_way, East_way, West_way = way_checker(way, North, South, East, West)
 
-    if way_check: # cheking if the move was valid
-        room = way_mover(room, North_way, South_way, East_way, West_way)
-        if pull_lever(room):
-            coin_counter += 1
-            print("You received 1 coin, your total is now", coin_counter)
+        if way_check: # cheking if the move was valid
+            room = way_mover(room, North_way, South_way, East_way, West_way)
+            if pull_lever(room):
+                coin_counter += 1
+                print("You received 1 coin, your total is now", coin_counter, end="")
+                print(".")
 
-if room == "3,1": # cheking the victory room
-    print("Victory! Total coins", coin_counter)
+    if room == "3,1": # cheking the victory room
+        print("Victory! Total coins", coin_counter, end="")
+        print(".")
+
+con = "y"
+while con != "n":
+    main()
+    con = input("Play again (y/n): ")
+
 
     
 
